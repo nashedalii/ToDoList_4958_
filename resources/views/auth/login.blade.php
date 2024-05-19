@@ -10,12 +10,13 @@
                         <div class="card-body p-md-5 mx-md-4">
                             <div class="text-center">
                                 <img src="img/foto.png" style="width: 100px;" alt="logo">
-                                <h4 class="mt-1 mb-5 pb-1">SiToDo</h4>
+                                <h4 class="mt-1 mb-5 pb-1 fw-bolder" style="color: #355B3E;">SiToDo</h4>
                             </div>
 
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
-                                <p>Please login to your account</p>
+                                <p class="fs-3 fw-bold" style="color: #355B3E;">List Planning System (To-Do List)</p>
+                                 <p style="color:#58745E">Welcome Back, Please login to your account</p>
 
                                 <div class="form-outline mb-4">
                                     <input id="form2Example11" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -38,7 +39,7 @@
                                 </div>
 
                                 <div class="text-center pt-1 mb-5 pb-1">
-                                    <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 mr-2">
+                                    <button type="submit" class="btn btn-primary btn-block fa-lg  mb-3 mr-2" style="background-color: #029664;">
                                         {{ __('Log in') }}
                                     </button>
                                     <a class="text-muted" href="{{ route('password.request') }}">Forgot password?</a>
@@ -46,7 +47,7 @@
 
                                 <div class="d-flex align-items-center justify-content-center pb-4">
                                     <p class="mb-0 me-2">Don't have an account?</p>
-                                    <a href="{{ route('register') }}" class="btn btn-outline-danger">Create new</a>
+                                    <a href="{{ route('register') }}" class="btn btn-outline-light" style="background-color: #029664;">Create new</a>
                                 </div>
                             </form>
 
@@ -57,10 +58,9 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                    <div class="col-lg-6 d-flex align-items-center" style="background-color: #F5DBC4;">
                         <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                            <h4 class="mb-4">We are more than just a company</h4>
-                            <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <img src="img/foto-login.png" class="img-fluid" alt="Descriptive text about the image">
                         </div>
                     </div>
                 </div>
