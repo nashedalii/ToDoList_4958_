@@ -13,11 +13,11 @@
                                 <h4 class="mt-1 mb-5 pb-1">SiToDo</h4>
                             </div>
 
-                            <form met   hod="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <p>Please login to your account</p>
 
-                                <div data-mdb-input-init class="form-outline mb-4">
+                                <div class="form-outline mb-4">
                                     <input id="form2Example11" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     <label class="form-label" for="form2Example11">Email</label>
                                     @error('email')
@@ -27,7 +27,7 @@
                                     @enderror
                                 </div>
 
-                                <div data-mdb-input-init class="form-outline mb-4">
+                                <div class="form-outline mb-4">
                                     <input id="form2Example22" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <label class="form-label" for="form2Example22">Password</label>
                                     @error('password')
@@ -38,7 +38,7 @@
                                 </div>
 
                                 <div class="text-center pt-1 mb-5 pb-1">
-                                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 mr-2">
+                                    <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 mr-2">
                                         {{ __('Log in') }}
                                     </button>
                                     <a class="text-muted" href="{{ route('password.request') }}">Forgot password?</a>
@@ -49,6 +49,12 @@
                                     <a href="{{ route('register') }}" class="btn btn-outline-danger">Create new</a>
                                 </div>
                             </form>
+
+                            @if (session('error'))
+                                <div class="alert alert-danger mt-3">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
