@@ -8,17 +8,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <!-- Vite CSS -->
   @vite('resources/css/app.css')
+  <!-- Tambahkan CSS Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Tambahkan CSS jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body class="flex flex-col min-h-screen">
   <!-- Header -->
   <header class="bg-emerald-800 h-16 flex items-center justify-between px-4">
     <div></div> <!-- This div is used to push the user info to the right -->
     <div class="flex items-center">
-        <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
-        <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('img/userprofile.png') }}" class="w-12 h-12 rounded-full object-cover">
+      <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
+      <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('img/userprofile.png') }}" class="w-12 h-12 rounded-full object-cover">
     </div>
-</header>
-
+  </header>
 
   <!-- Main Content Wrapper -->
   <div class="flex flex-grow">
@@ -61,8 +64,11 @@
     </div>
   </div>
 
-  <script>
-    // Tambahkan script JavaScript jika diperlukan
-  </script>
+  <!-- Tambahkan JS jQuery dan jQuery UI -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- Tambahkan JS Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  @stack('scripts')
 </body>
 </html>
