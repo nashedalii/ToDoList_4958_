@@ -1,74 +1,73 @@
 @extends('layouts.app2')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Box</h1>
-        <button class="btn btn-primary" id="addTaskButton">Add Task</button>
-    </div>
-    <div class="text-center">
-        <img src="img/emptybox.png" alt="Your Image" class="img-fluid mb-3 mx-auto">
-        <p>Your to-do list is empty. <br> It's time to dream big and make it happen.</p>
-    </div>
-
-    <!-- Pop-up form untuk menambahkan task -->
-    <div class="modal" tabindex="-1" role="dialog" id="addTaskModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add Task</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<div class="container mx-auto py-4">
+    <h1 class="text-3xl mb-4">Box</h1>
+    
+    @if(session('success'))
+        <div class="bg-green-500 text-white p-2 rounded">
+            {{ session('success') }}
+        </div>
+    @endif
+    
+    <ul>
+        @foreach($tasks as $task)
+            <li class="mb-2">
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="text-xl font-semibold">{{ $task->name }}</h2>
+                    <p>{{ $task->description }}</p>
+                    <p>Due: {{ $task->due_date }}</p>
+                    <p>Priority: {{ $task->priority }}</p>
                 </div>
-                <div class="modal-body">
-                    <form id="addTaskForm">
-                        <div class="form-group">
-                            <label for="taskName">Task Name</label>
-                            <input type="text" class="form-control" id="taskName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" id="description" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="dueDate">Due Date</label>
-                            <input type="text" class="form-control" id="dueDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="priority">Priority</label>
-                            <select class="form-control" id="priority" required>
-                                <option>Low</option>
-                                <option>Medium</option>
-                                <option>High</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Task</button>
-                    </form>
-                </div>
+            </li>
+        @endforeach
+    </ul>
+    
+    <button id="addTaskButton" class="bg-blue-500 text-white p-2 rounded mt-4">Add Task</button>
+    
+    <div id="addTaskModal" class="hidden fixed z-10 inset-0 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white p-8 rounded shadow-lg max-w-md w-full">
+                <h2 class="text-2xl mb-4">Add Task</h2>
+                <form action="{{ route('tasks.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700">Task Name</label>
+                        <input type="text" name="name" id="name" class="w-full border-gray-300 rounded p-2" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="description" class="block text-gray-700">Description</label>
+                        <textarea name="description" id="description" class="w-full border-gray-300 rounded p-2"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="due_date" class="block text-gray-700">Due Date</label>
+                        <input type="date" name="due_date" id="due_date" class="w-full border-gray-300 rounded p-2">
+                    </div>
+                    <div class="mb-4">
+                        <label for="priority" class="block text-gray-700">Priority</label>
+                        <select name="priority" id="priority" class="w-full border-gray-300 rounded p-2">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" id="cancelButton" class="bg-gray-500 text-white p-2 rounded mr-2">Cancel</button>
+                        <button type="submit" class="bg-blue-500 text-white p-2 rounded">Add Task</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-@endsection
-
-@push('scripts')
 <script>
-    $(document).ready(function() {
-        // Initialize datepicker
-        $('#dueDate').datepicker();
+document.getElementById('addTaskButton').addEventListener('click', function() {
+    document.getElementById('addTaskModal').classList.remove('hidden');
+});
 
-        // Show the modal when the add task button is clicked
-        $('#addTaskButton').on('click', function() {
-            $('#addTaskModal').modal('show');
-        });
-
-        // Handle the form submission
-        $('#addTaskForm').on('submit', function(event) {
-            event.preventDefault();
-            // Here you can add the code to handle the form submission,
-            // such as sending an AJAX request to store the task.
-            $('#addTaskModal').modal('hide');
-        });
-    });
+document.getElementById('cancelButton').addEventListener('click', function() {
+    document.getElementById('addTaskModal').classList.add('hidden');
+});
 </script>
-@endpush
+@endsection

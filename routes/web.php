@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\TaskController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,9 +22,8 @@ All Normal Users Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/box', function () {
-        return view('box');
-    })->name('box');
+    Route::get('/box', [TaskController::class, 'index'])->name('box');
+    Route::post('/box', [TaskController::class, 'store'])->name('tasks.store');
     Route::get('/todo-list', function () {
         return view('todo-list');
     })->name('todo-list');
@@ -37,16 +37,14 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
-    
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
 
 /*------------------------------------------
 --------------------------------------------
-All Admin Routes List
+All Manager Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:manager'])->group(function () {
-    
     Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home');
 });
