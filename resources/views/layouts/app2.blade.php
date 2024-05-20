@@ -14,10 +14,11 @@
   <header class="bg-emerald-800 h-16 flex items-center justify-between px-4">
     <div></div> <!-- This div is used to push the user info to the right -->
     <div class="flex items-center">
-      <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
-      <img src="{{ asset('img/userprofile.png') }}"  class="w-12 h-12 rounded-full">
+        <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
+        <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('img/userprofile.png') }}" class="w-12 h-12 rounded-full object-cover">
     </div>
-  </header>
+</header>
+
 
   <!-- Main Content Wrapper -->
   <div class="flex flex-grow">
@@ -34,6 +35,12 @@
           <a href="{{ route('todo-list') }}" class="text-white flex items-center p-2 rounded-lg hover:bg-emerald-800">
             <span class="material-icons-outlined mr-3">check_circle</span>
             Todo-List
+          </a>
+        </li>
+        <li class="mb-4">
+          <a href="{{ route('settings') }}" class="text-white flex items-center p-2 rounded-lg hover:bg-emerald-800">
+            <span class="material-icons-outlined mr-3">settings</span>
+            Settings
           </a>
         </li>
       </ul>
