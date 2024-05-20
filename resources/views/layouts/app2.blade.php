@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SiTodo</title>
+  <!-- Import Google Fonts Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <!-- Vite CSS -->
+
   @vite('resources/css/app.css')
 </head>
 <body class="flex flex-col min-h-screen">
@@ -13,7 +16,7 @@
     <div></div> <!-- This div is used to push the user info to the right -->
     <div class="flex items-center">
       <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
-      <img src="path-to-your-avatar.png" alt="User Avatar" class="w-12 h-12 rounded-full">
+      <img src="img/userprofile.png"  class="w-12 h-12 rounded-full">
     </div>
   </header>
 
