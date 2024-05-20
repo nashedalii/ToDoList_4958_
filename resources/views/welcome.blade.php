@@ -142,19 +142,9 @@
     <img class="h-20 w-auto" src="img/foto.png" alt="">
     </div>
 
-    <p class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-    Kami menghargai masukan Anda dan siap membantu Anda jika ada pertanyaan atau permasalahan apa pun. Jangan ragu untuk menghubungi kami.
-    </p>
+   
 
-    <ul class="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
-      <li>
-        <a class="text-gray-700 transition hover:text-gray-700/75" href="#about"> About </a>
-      </li>
-
-      <li>
-        <a class="text-gray-700 transition hover:text-gray-700/75" href="#faq"> Faq </a>
-      </li>
-    </ul>
+    
 
     <ul class="mt-12 flex justify-center gap-6 md:gap-8">
       <li>

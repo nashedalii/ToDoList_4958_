@@ -41,6 +41,7 @@
       </div>
     </div>
   </nav>
+  `
   <!-- Ini adalah bagian content yang akan diisi oleh view yang menggunakan layout ini -->
   @yield('content')
 </body>
