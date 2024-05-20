@@ -24,7 +24,10 @@
                 <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" class="w-24 h-24 rounded-full object-cover">
             </div>
         @endif
-        <button type="submit" class="bg-emerald-700 text-white p-2 rounded">Update Profile Picture</button>
+        <button type="submit" class="bg-emerald-700 text-white p-2 rounded hover:bg-emerald-800">
+        Update Profile Picture
+        </button>
+
     </form>
 </div>
 
