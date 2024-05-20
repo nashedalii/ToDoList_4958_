@@ -3,46 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> SiTodo</title>
+  <title>SiTodo</title>
   <!-- Vite CSS -->
   @vite('resources/css/app.css')
 </head>
-<body>
-  <nav class="bg-white shadow">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex-shrink-0">
-          <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-800">SiTodo</a>
-        </div>
-        <div class="hidden md:block">
-          <ul class="ml-4 flex items-center space-x-4">
-            <!-- Opsi Login/Logout -->
-            @guest
-              <li><a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-800">Login</a></li>
-              <li><a href="{{ route('register') }}" class="text-gray-600 hover:text-gray-800">Register</a></li>
-            @else
-              <li class="relative">
-                <button id="navbarDropdown" class="text-gray-600 hover:text-gray-800 focus:outline-none" aria-haspopup="true" aria-expanded="false" v-pre>
-                  {{ Auth::user()->name }}
-                </button>
-                <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false" x-cloak x-show="open">
-                  <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                  </a>
-                </div>
-              </li>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-primary">Logout</button>
-              </form>
-            @endguest
-          </ul>
-        </div>
-      </div>
+<body class="flex flex-col min-h-screen">
+  <!-- Header -->
+  <header class="bg-green-800 h-16 flex items-center justify-between px-4">
+    <div></div> <!-- This div is used to push the user info to the right -->
+    <div class="flex items-center">
+      <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
+      <img src="path-to-your-avatar.png" alt="User Avatar" class="w-12 h-12 rounded-full">
     </div>
-  </nav>
-  `
-  <!-- Ini adalah bagian content yang akan diisi oleh view yang menggunakan layout ini -->
-  @yield('content')
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <div class="flex flex-grow">
+    <!-- Sidebar -->
+    <nav class="bg-green-700 w-64 min-h-screen p-4 flex flex-col">
+      <ul class="flex-grow">
+        <li class="mb-4">
+          <a href="#" class="text-white flex items-center p-2 rounded-lg hover:bg-green-800">
+            <span class="material-icons-outlined mr-3">inbox</span>
+            Box
+          </a>
+        </li>
+        <li class="mb-4">
+          <a href="#" class="text-white flex items-center p-2 rounded-lg hover:bg-green-800">
+            <span class="material-icons-outlined mr-3">check_circle</span>
+            Todo-List
+          </a>
+        </li>
+      </ul>
+      <div>
+        <a href="#" class="text-white flex items-center p-2 rounded-lg hover:bg-green-800" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <span class="material-icons-outlined mr-3">logout</span>
+          Log Out
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+          @csrf
+        </form>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex-grow p-8">
+      @yield('content')
+    </div>
+  </div>
+
+  <script>
+    // Tambahkan script JavaScript jika diperlukan
+  </script>
 </body>
 </html>
