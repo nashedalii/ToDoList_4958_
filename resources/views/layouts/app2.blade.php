@@ -16,18 +16,29 @@
 <body class="flex flex-col min-h-screen">
   <!-- Header -->
   <header class="bg-emerald-800 h-16 flex items-center justify-between px-4">
-    <div></div> <!-- This div is used to push the user info to the right -->
-    <div class="flex items-center">
-      <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
-      <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('img/userprofile.png') }}" class="w-12 h-12 rounded-full object-cover">
+    <div>
+        <a href="{{ url('/') }}" class="flex items-center">
+            <img src="img/foto.png" alt="Logo Aplikasi" class="h-8 mr-2">
+            <span class="text-white font-semibold text-lg">SiToDo</span>
+        </a>
     </div>
-  </header>
+    <div class="flex items-center">
+        <span class="text-white font-semibold mr-4">{{ Auth::user()->name }}</span>
+        <img src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('img/userprofile.png') }}" class="w-12 h-12 rounded-full object-cover">
+    </div>
+</header>
 
   <!-- Main Content Wrapper -->
   <div class="flex flex-grow">
     <!-- Sidebar -->
     <nav class="bg-emerald-700 w-64 min-h-screen p-4 flex flex-col">
       <ul class="flex-grow">
+      <li class="mb-4">
+          <a href="{{ route('home') }}" class="text-white flex items-center p-2 rounded-lg hover:bg-emerald-800">
+            <span class="material-icons-outlined mr-3">cabin</span>
+            Home
+          </a>
+        </li>
         <li class="mb-4">
           <a href="{{ route('box') }}" class="text-white flex items-center p-2 rounded-lg hover:bg-emerald-800">
             <span class="material-icons-outlined mr-3">inbox</span>
@@ -42,7 +53,7 @@
         </li>
         <li class="mb-4">
           <a href="{{ route('settings') }}" class="text-white flex items-center p-2 rounded-lg hover:bg-emerald-800">
-            <span class="material-icons-outlined mr-3">settings</span>
+            <span class="material-icons-outlined mr-3">manage_accounts</span>
             Settings
           </a>
         </li>

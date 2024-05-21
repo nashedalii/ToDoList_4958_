@@ -14,3 +14,8 @@
 #priority-icons span.hidden {
     display: none;
 }
+
+html {
+    scroll-behavior: smooth;
+  }
+  
