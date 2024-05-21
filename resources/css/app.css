@@ -5,3 +5,12 @@
 .object-cover {
     object-fit: cover;
 }
+
+.appearance-none {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+#priority-icons span.hidden {
+    display: none;
+}

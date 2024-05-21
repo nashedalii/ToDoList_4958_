@@ -43,13 +43,20 @@
                         <label for="due_date" class="block text-gray-700">Due Date</label>
                         <input type="date" name="due_date" id="due_date" class="w-full border-gray-300 rounded p-2">
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-4 relative">
                         <label for="priority" class="block text-gray-700">Priority</label>
-                        <select name="priority" id="priority" class="w-full border-gray-300 rounded p-2">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
+                        <div class="relative">
+                            <select name="priority" id="priority" class="w-full border-gray-300 rounded p-2 appearance-none">
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                            <div id="priority-icons" class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <span id="low-icon" class="material-icons-outlined hidden">arrow_downward</span>
+                                <span id="medium-icon" class="material-icons-outlined hidden">horizontal_rule</span>
+                                <span id="high-icon" class="material-icons-outlined hidden">arrow_upward</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="flex justify-end">
                         <button type="button" id="cancelButton" class="bg-gray-500 text-white p-2 rounded mr-2">Cancel</button>
@@ -68,6 +75,27 @@ document.getElementById('addTaskButton').addEventListener('click', function() {
 
 document.getElementById('cancelButton').addEventListener('click', function() {
     document.getElementById('addTaskModal').classList.add('hidden');
+});
+
+document.getElementById('priority').addEventListener('change', function() {
+    const lowIcon = document.getElementById('low-icon');
+    const mediumIcon = document.getElementById('medium-icon');
+    const highIcon = document.getElementById('high-icon');
+    lowIcon.classList.add('hidden');
+    mediumIcon.classList.add('hidden');
+    highIcon.classList.add('hidden');
+    if (this.value === 'Low') {
+        lowIcon.classList.remove('hidden');
+    } else if (this.value === 'Medium') {
+        mediumIcon.classList.remove('hidden');
+    } else if (this.value === 'High') {
+        highIcon.classList.remove('hidden');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const event = new Event('change');
+    document.getElementById('priority').dispatchEvent(event);
 });
 </script>
 @endsection
