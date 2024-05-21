@@ -4,44 +4,190 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
+  
 </head>
 <body>
-<nav class="bg-white shadow">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
-            <div class="flex-shrink-0">
-                <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-800">SiTodo</a>
-            </div>
-            <div class="hidden md:block">
-                <ul class="ml-4 flex items-center space-x-4">
-                    <!-- Tautan Navbar -->
-                    <li><a href="#" class="text-gray-600 hover:text-gray-800">Home</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-gray-800">About</a></li>
-                    <!-- Opsi Login/Logout -->
-                    @guest
-                        <li><a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-800">Login</a></li>
-                        <!-- Hapus tautan Register jika tidak diperlukan -->
-                        <li><a href="{{ route('register') }}" class="text-gray-600 hover:text-gray-800">Register</a></li>
-                    @else
-                        <li class="relative">
-                            <button id="navbarDropdown" class="text-gray-600 hover:text-gray-800 focus:outline-none" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </button>
-                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 hidden" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false" x-cloak x-show="open">
-                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                            </div>
-                        </li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                            @csrf
-                        </form>
-                    @endguest
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
+<!-- Inspiration https://s3-ap-southeast-2.amazonaws.com/focusbooster.cdn/Landing+pages/kanban-and-focusbooster/kanban-board-notion.png -->
 
+<div class="h-screen p-2">
+  <div class="grid lg:grid-cols-7 md:grid-cols-4 sm:grid-cols-2 gap-5">
+    <!-- To-do -->
+    <div class="bg-white rounded px-2 py-2">
+      <!-- board category header -->
+      <div class="flex flex-row justify-between items-center mb-2 mx-1">
+        <div class="flex items-center">
+          <h2 class="bg-red-100 text-sm w-max px-1 rounded mr-2 text-gray-700">To-do</h2>
+          <p class="text-gray-400 text-sm">3</p>
+        </div>
+        <div class="flex items-center text-gray-300">
+          <p class="mr-2 text-2xl">---</p>
+          <p class="text-2xl">+</p>
+        </div>
+      </div>
+      <!-- board card -->
+      <div class="grid grid-rows-2 gap-2">
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Social media</h3>
+          <p class="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">To-do</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">2</p>
+        </div>
+
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Review survey results</h3>
+          <p class="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">To-do</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">1</p>
+        </div>
+
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Research video marketing</h3>
+          <p class="bg-red-100 text-xs w-max p-1 rounded mr-2 text-gray-700">To-do</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">3</p>
+        </div>
+      </div>
+      <div class="flex flex-row items-center text-gray-300 mt-2 px-1">
+        <p class="rounded mr-2 text-2xl">+</p>
+        <p class="pt-1 rounded text-sm">New</p>
+      </div>
+    </div>
+
+    <!-- WIP Kanban -->
+    <div class="bg-white rounded px-2 py-2">
+      <!-- board category header -->
+      <div class="flex flex-row justify-between items-center mb-2 mx-1">
+        <div class="flex items-center">
+          <h2 class="bg-yellow-100 text-sm w-max px-1 rounded mr-2 text-gray-700">WIP</h2>
+          <p class="text-gray-400 text-sm">2</p>
+        </div>
+        <div class="flex items-center text-gray-300">
+          <p class="mr-2 text-2xl">---</p>
+          <p class="text-2xl">+</p>
+        </div>
+      </div>
+      <!-- board card -->
+      <div class="grid grid-rows-2 gap-2">
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Blog post live</h3>
+          <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">WIP</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Jun 21, 2019</p>
+          <p class="text-xs text-gray-500 mt-2">2</p>
+        </div>
+
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Email campaign</h3>
+          <p class="bg-yellow-100 text-xs w-max p-1 rounded mr-2 text-gray-700">WIP</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Jun 21, 2019 &#10141; Jun 21, 2019</p>
+          <p class="text-xs text-gray-500 mt-2">1</p>
+        </div>
+      </div>
+      <div class="flex flex-row items-center text-gray-300 mt-2 px-1">
+        <p class="rounded mr-2 text-2xl">+</p>
+        <p class="pt-1 rounded text-sm">New</p>
+      </div>
+    </div>
+
+    <!-- Complete Kanban -->
+    <div class="bg-white rounded px-2 py-2">
+      <!-- board category header -->
+      <div class="flex flex-row justify-between items-center mb-2 mx-1">
+        <div class="flex items-center">
+          <h2 class="bg-green-100 text-sm w-max px-1 rounded mr-2 text-gray-700">Complete</h2>
+          <p class="text-gray-400 text-sm">4</p>
+        </div>
+        <div class="flex items-center">
+          <p class="text-gray-300 mr-2 text-2xl">---</p>
+          <p class="text-gray-300 text-2xl">+</p>
+        </div>
+      </div>
+      <!-- board card -->
+      <div class="grid grid-rows-2 gap-2">
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Morning emails and to-do list</h3>
+          <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Jun 21, 2019</p>
+          <p class="text-xs text-gray-500 mt-2">1</p>
+        </div>
+
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Blog post</h3>
+          <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Jun 20, 2019</p>
+          <p class="text-xs text-gray-500 mt-2">5</p>
+        </div>
+
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Reconcile accounts</h3>
+          <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Jun 19, 2019</p>
+          <p class="text-xs text-gray-600 mt-2">4</p>
+        </div>
+
+        <div class="p-2 rounded shadow-sm border-gray-100 border-2">
+          <h3 class="text-sm mb-3 text-gray-700">Website AB test</h3>
+          <p class="bg-green-100 text-xs w-max p-1 rounded mr-2 text-gray-700">Complete</p>
+          <div class="flex flex-row items-center mt-2">
+            <div class="bg-gray-300 rounded-full w-4 h-4 mr-3"></div>
+            <a href="#" class="text-xs text-gray-500">Sophie Worso</a>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">Jun 18, 2019</p>
+          <p class="text-xs text-gray-600 mt-2">3</p>
+        </div>
+      </div>
+      <div class="flex flex-row items-center text-gray-300 mt-2 px-1">
+        <p class="rounded mr-2 text-2xl">+</p>
+        <p class="pt-1 rounded text-sm">New</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded px-2 py-2">
+      <!-- board category header -->
+      <div class="flex flex-row justify-between items-center mb-2 mx-1">
+        <div class="flex items-center">
+          <h2 class="bg-gray-200 w-4 px-1 rounded mr-2 text-sm text-center">.</h2>
+          <p class="text-gray-400 text-sm">0</p>
+        </div>
+        <div class="flex items-center text-gray-300">
+          <p class="mr-2 text-2xl">---</p>
+          <p class="text-2xl">+</p>
+        </div>
+      </div>
+      <div class="flex flex-row items-center text-gray-300 mt-2 px-1">
+        <p class="rounded mr-2 text-2xl">+</p>
+        <p class="pt-1 rounded text-sm">New</p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
