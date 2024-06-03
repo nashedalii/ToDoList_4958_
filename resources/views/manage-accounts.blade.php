@@ -3,25 +3,26 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Manage Accounts') }}</div>
+        <div class="col-md-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-gradient-primary text-white">{{ __('Manage Accounts') }}</div>
 
                 <div class="card-body">
                     @if (session('success'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
 
-                    <h2>Manage User Accounts</h2>
-                    <table class="table">
-                        <thead>
+                 
+
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                
-                                <th>Action</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,19 +30,20 @@
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                
-                                <td>
-                                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-primary">Edit</a>
+                                <td class="text-center">
+                                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-primary btn-sm mx-1">Edit</a>
                                     <form action="{{ route('delete-user', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm mx-1" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+
+                
                 </div>
             </div>
         </div>
