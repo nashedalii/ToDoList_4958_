@@ -9,32 +9,39 @@
 <title>SITODO</title>
 
 <body>
-<div class="bg-white">
+<div class="bg-white ">
   <header class="absolute inset-x-0 top-0 z-50">
-    <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-      <div class="flex lg:flex-1">
-        <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img class="h-10 w-auto" src="img/foto.png" alt="">
-        </a>
-      </div>
-      <div class="flex lg:hidden">
-        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-          <span class="sr-only">Open main menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-12">
-        <a href="#about" class="text-xl font-semibold leading-6 text-gray-900">About Us</a>
-        <a href="#faq" class="text-xl font-semibold leading-6 text-gray-900">FaQ</a>
-        <a href="#contact" class="text-xl font-semibold leading-6 text-gray-900">Contact</a>
-      </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="/login" class="text-xl font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </nav>
+  <nav id="navbar" class="fixed top-0 left-0 right-0 flex items-center justify-between p-6 lg:px-8 z-50 transition duration-300">
+  <div class="flex lg:flex-1">
+    <a href="#" class="-m-1.5 p-1.5">
+      <span class="sr-only">Your Company</span>
+      <img class="h-10 w-auto" src="img/foto.png" alt="">
+    </a>
+  </div>
+  <div class="flex lg:hidden">
+    <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+      <span class="sr-only">Open main menu</span>
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+      </svg>
+    </button>
+  </div>
+  <div class="hidden lg:flex lg:gap-x-12">
+    <a href="#about" class="text-xl font-semibold leading-6 text-gray-900">About Us</a>
+    <a href="#faq" class="text-xl font-semibold leading-6 text-gray-900">FaQ</a>
+    <a href="#contact" class="text-xl font-semibold leading-6 text-gray-900">Contact</a>
+  </div>
+  <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+    <a href="/login" class="text-xl font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</nav>
+
+
+<!-- Add some padding to the top of your main content to avoid overlapping with the fixed navbar -->
+<div class="pt-24">
+  <!-- Your main content here -->
+</div>
+
     <!-- Mobile menu, show/hide based on menu open state. -->
     <div class="lg:hidden" role="dialog" aria-modal="true">
       <!-- Background backdrop, show/hide based on slide-over state. -->
@@ -80,7 +87,7 @@
           Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
         </div> -->
       </div>
-      <div class="text-center">
+      <div class="text-center" id="home">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">SiToDo</h1>
         
         <div class="mt-10 flex items-center justify-center gap-x-6">
@@ -99,12 +106,26 @@
         </div> -->
       </div>
     <div class="text-center" id="about">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">About Us</h1>
-        <p class="mt-6 text-lg leading-8 text-gray-600">Sitodo adalah platform untuk manajemen daftar tugas (to-do list) yang sederhana dan efektif. Dengan Sitodo, pengguna dapat dengan mudah membuat, mengatur, dan melacak tugas mereka secara online.</p>
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-         
-          
+    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">About Us</h1>
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2">
+                <img src="img/laptop-home.png" alt="About Us Image" class="w-full h-auto">
+            </div>
+            <div class="md:w-1/2 mt-6 md:mt-0 md:pl-10 text-left">
+                
+                <p class="mt-6 text-lg leading-8 text-gray-600">
+                    Sitodo adalah platform untuk manajemen daftar tugas (to-do list) yang sederhana dan efektif.
+                    Dengan Sitodo, pengguna dapat dengan mudah membuat, mengatur, dan melacak tugas mereka secara online.
+                </p>
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                    <!-- Additional content can go here -->
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+
       </div>
     </div>
     <!-- end -->
@@ -117,15 +138,25 @@
           Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
         </div> -->
       </div>
-    <div class="text-center" id="faq">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">FaQ</h1>
-        <p class="mt-6 text-lg leading-8 text-gray-400 italic">Apa itu Sitodo?
-        <br>Sitodo adalah platform untuk manajemen daftar tugas (to-do list) yang sederhana dan efektif. Ini membantu pengguna untuk membuat, mengatur, dan melacak tugas mereka secara online.</p>
-        <p class="mt-6 text-lg leading-8 text-gray-400 italic">Apakah Sitodo tersedia secara gratis?
-        <br>Ya, Sitodo tersedia secara gratis. Anda dapat mendaftar akun tanpa biaya dan mulai menggunakan fitur-fiturnya.</p>
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-          
-        </div>
+      <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center mt-12" id="faq">
+      <div class="md:w-1/2 text-left">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">FaQ</h1>
+      <p class="mt-6 text-lg leading-8 text-gray-400 italic">
+        Apa itu Sitodo?<br>
+        Sitodo adalah platform untuk manajemen daftar tugas (to-do list) yang sederhana dan efektif. Ini membantu pengguna untuk membuat, mengatur, dan melacak tugas mereka secara online.
+      </p>
+      <p class="mt-6 text-lg leading-8 text-gray-400 italic">
+        Apakah Sitodo tersedia secara gratis?<br>
+        Ya, Sitodo tersedia secara gratis. Anda dapat mendaftar akun tanpa biaya dan mulai menggunakan fitur-fiturnya.
+      </p>
+    </div>
+    <div class="md:w-1/2 mt-6 md:mt-0 md:pl-10">
+      <img src="img/faq.jpg" alt="FAQ Image" class="w-full h-auto">
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
     <!-- end -->
@@ -227,4 +258,15 @@
 </div>
 
 </body>
+<script>
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-white', 'shadow-lg');
+    } else {
+      navbar.classList.remove('bg-white', 'shadow-lg');
+    }
+  });
+</script>
+
 </html>

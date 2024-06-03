@@ -10,6 +10,6 @@
         <p>Priority: {{ $task->priority }}</p>
     </div>
     
-    <a href="{{ route('box') }}" class="bg-blue-500 text-white p-2 rounded mt-4 inline-block">Back to Tasks</a>
+    <a href="{{ route('box') }}" class="bg-lime-500 text-white p-2 rounded mt-4 inline-block">Back to Tasks</a>
 </div>
 @endsection

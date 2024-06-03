@@ -19,8 +19,9 @@
                                  <p style="color:#58745E">Welcome Back, Please login to your account</p>
 
                                 <div class="form-outline mb-4">
-                                    <input id="form2Example11" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     <label class="form-label" for="form2Example11">Email</label>
+                                    <input id="form2Example11" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -29,8 +30,9 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input id="form2Example22" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <label class="form-label" for="form2Example22">Password</label>
+                                    <input id="form2Example22" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

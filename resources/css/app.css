@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./path/to/your/custom.css";
 
 .object-cover {
     object-fit: cover;

@@ -1,10 +1,10 @@
 @extends('layouts.app2')
 
 @section('content')
-<h1 class="text-3xl mb-4">Box</h1>
-<button id="addTaskButton" class="bg-blue-500 text-white p-2 rounded mt-1 mx-auto">Add Task</button>
+
 <div class="container mx-auto py-4">
-    
+    <h1 class="text-3xl mb-4 font-bold">Box</h1>
+     <button id="addTaskButton" class="bg-green-500 text-white p-2 rounded mt-1 mb-4">Add Task</button>
     
     @if(session('success'))
         <div class="bg-green-500 text-white p-2 rounded">
@@ -21,7 +21,7 @@
                     <p>Due: {{ $task->due_date }}</p>
                     <p>Priority: {{ $task->priority }}</p>
                     <div class="flex justify-end mt-2">
-                        <a href="{{ route('tasks.show', $task->id) }}" class="bg-green-500 text-white p-2 rounded mx-2">View</a>
+                        <a href="{{ route('tasks.show', $task->id) }}" class="bg-lime-500 text-white p-2 rounded mx-2">View</a>
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
@@ -69,8 +69,8 @@
                         </div>
                     </div>
                     <div class="flex justify-end">
-                        <button type="button" id="cancelButton" class="bg-gray-500 text-white p-2 rounded mr-2">Cancel</button>
-                        <button type="submit" class="bg-blue-500 text-white p-2 rounded">Add Task</button>
+                        <button type="button" id="cancelButton" class="bg-rose-500 text-white p-2 rounded mr-2">Cancel</button>
+                        <button type="submit" class="bg-green-500 text-white p-2 rounded">Add Task</button>
                     </div>
                 </form>
             </div>

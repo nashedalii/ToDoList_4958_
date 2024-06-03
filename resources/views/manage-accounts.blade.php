@@ -20,7 +20,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
+                                
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->role }}</td>
+                                
                                 <td>
                                     <a href="{{ route('edit-user', $user->id) }}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('delete-user', $user->id) }}" method="POST" class="d-inline">

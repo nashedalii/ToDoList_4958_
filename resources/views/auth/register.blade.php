@@ -19,8 +19,9 @@
                                  <p style="color:#58745E">Welcome Back, Please login to your account</p>
 
                                 <div class="form-outline mb-4">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                     <label class="form-label" for="name">Name</label>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -29,8 +30,9 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                     <label class="form-label" for="email">Email Address</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                   
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -39,8 +41,9 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                     <label class="form-label" for="password">Password</label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -49,8 +52,9 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     <label class="form-label" for="password-confirm">Confirm Password</label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    
                                 </div>
 
                                 <div class="text-center pt-1 mb-5 pb-1">
