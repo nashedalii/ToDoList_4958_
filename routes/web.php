@@ -31,7 +31,6 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'updateProfilePicture'])->name('settings.updateProfilePicture');
 });
-
 /*------------------------------------------
 --------------------------------------------
 All Admin Routes List
@@ -39,7 +38,16 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    Route::get('/edit-user/{id}', [HomeController::class, 'editUser'])->name('edit-user');
+    Route::put('/update-user/{id}', [HomeController::class, 'updateUser'])->name('update-user');
+    Route::delete('/delete-user/{id}', [HomeController::class, 'deleteUser'])->name('delete-user');
+    Route::get('/manage-accounts', [HomeController::class, 'manageAccounts'])->name('manage-accounts');
 });
+
+
+
+
+
 
 /*------------------------------------------
 --------------------------------------------
