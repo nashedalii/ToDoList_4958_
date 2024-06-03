@@ -7,9 +7,14 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all();
+        $priority = $request->query('priority');
+        if ($priority) {
+            $tasks = Task::where('priority', $priority)->get();
+        } else {
+            $tasks = Task::all();
+        }
         return view('box', compact('tasks'));
     }
 
@@ -25,5 +30,31 @@ class TaskController extends Controller
         Task::create($request->all());
 
         return redirect()->route('box')->with('success', 'Task created successfully.');
+    }
+
+    public function show($id)
+    {
+        $task = Task::findOrFail($id);
+        return view('tasks.show', compact('task'));
+    }
+    
+
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->route('box')->with('success', 'Task deleted successfully.');
+    }
+
+    public function todoList(Request $request)
+    {
+        $priority = $request->query('priority');
+        if ($priority) {
+            $tasks = Task::where('priority', $priority)->get();
+        } else {
+            $tasks = Task::all();
+        }
+        return view('todo-list', compact('tasks', 'priority'));
     }
 }

@@ -1,8 +1,10 @@
 @extends('layouts.app2')
 
 @section('content')
+<h1 class="text-3xl mb-4">Box</h1>
+<button id="addTaskButton" class="bg-blue-500 text-white p-2 rounded mt-1 mx-auto">Add Task</button>
 <div class="container mx-auto py-4">
-    <h1 class="text-3xl mb-4">Box</h1>
+    
     
     @if(session('success'))
         <div class="bg-green-500 text-white p-2 rounded">
@@ -18,12 +20,20 @@
                     <p>{{ $task->description }}</p>
                     <p>Due: {{ $task->due_date }}</p>
                     <p>Priority: {{ $task->priority }}</p>
+                    <div class="flex justify-end mt-2">
+                        <a href="{{ route('tasks.show', $task->id) }}" class="bg-green-500 text-white p-2 rounded mx-2">View</a>
+                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 text-white p-2 rounded">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </li>
         @endforeach
     </ul>
     
-    <button id="addTaskButton" class="bg-blue-500 text-white p-2 rounded mt-4">Add Task</button>
+    
     
     <div id="addTaskModal" class="hidden fixed z-10 inset-0 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen">

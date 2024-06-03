@@ -24,9 +24,10 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/box', [TaskController::class, 'index'])->name('box');
     Route::post('/box', [TaskController::class, 'store'])->name('tasks.store');
-    Route::get('/todo-list', function () {
-        return view('todo-list');
-    })->name('todo-list');
+    Route::get('/box/{task}', [TaskController::class, 'show'])->name('tasks.show'); // Added route for showing a single task
+    Route::delete('/box/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy'); // Added route for deleting a task
+    Route::get('/todo-list', [TaskController::class, 'todoList'])->name('todo-list');
+
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'updateProfilePicture'])->name('settings.updateProfilePicture');
 });
