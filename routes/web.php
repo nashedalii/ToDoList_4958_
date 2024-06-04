@@ -30,6 +30,9 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'updateProfilePicture'])->name('settings.updateProfilePicture');
+    Route::post('/settings/update-name', [SettingsController::class, 'updateName'])->name('settings.updateName');
+
+
 });
 /*------------------------------------------
 --------------------------------------------
