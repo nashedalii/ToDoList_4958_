@@ -1,3 +1,8 @@
+### Terdiri dari :
+
+1. Hidayat Nur Hakim (2208107010063)
+2. Nashed Bayazid Ali (2208107010049)
+
 # SiToDo
 
 Sitodo adalah platform untuk manajemen daftar tugas (to-do list) yang sederhana dan efektif. Dengan Sitodo, pengguna dapat dengan mudah membuat, mengatur, dan melacak daftar tugas mereka secara online. Dengan antarmuka yang bersih dan intuitif, Sitodo memungkinkan pengguna untuk:
