@@ -1,5 +1,4 @@
-![](https://github.com/Dayatnur/Kelompok06-SiToDo-ProjectFINALPBW/preview.gif)
-
+![Project Preview](https://github.com/Dayatnur/Kelompok06-SiToDo-ProjectFINALPBW/blob/main/preview.gif)
 # Kelompok-06
 ## Terdiri dari :
 
