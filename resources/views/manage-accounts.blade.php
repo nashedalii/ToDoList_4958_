@@ -15,8 +15,6 @@
                         </div>
                     @endif
 
-                 
-
                     <table class="table table-striped table-hover table-bordered">
                         <thead class="thead-dark">
                             <tr>
@@ -31,19 +29,21 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-primary btn-sm mx-1">Edit</a>
+                                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-primary btn-sm mx-1">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
                                     <form action="{{ route('delete-user', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm mx-1" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm mx-1" onclick="return confirm('Are you sure you want to delete this user?')">
+                                            <i class="fas fa-trash-alt"></i> Delete
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-
-                
                 </div>
             </div>
         </div>

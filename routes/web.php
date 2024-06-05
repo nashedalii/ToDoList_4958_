@@ -52,6 +52,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
 
 
+
 /*------------------------------------------
 --------------------------------------------
 All Manager Routes List
