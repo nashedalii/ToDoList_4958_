@@ -57,4 +57,24 @@ class TaskController extends Controller
         }
         return view('todo-list', compact('tasks', 'priority'));
     }
+    public function edit(Task $task)
+{
+    return view('tasks.edit', compact('task'));
+}
+
+public function update(Request $request, Task $task)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'due_date' => 'nullable|date',
+        'priority' => 'required|in:Low,Medium,High',
+    ]);
+
+    $task->update($request->all());
+
+    return redirect()->route('box')->with('success', 'Task updated successfully');
+}
+
+
 }

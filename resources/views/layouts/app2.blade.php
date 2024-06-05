@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SiTodo</title>
+  <title>SITODO</title>
   <!-- Import Google Fonts Material Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <!-- Vite CSS -->

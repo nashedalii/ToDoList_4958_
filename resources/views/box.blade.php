@@ -27,6 +27,7 @@
                     </p>
                     <div class="flex justify-end mt-2">
                         <a href="{{ route('tasks.show', $task->id) }}" class="bg-lime-500 text-white p-2 rounded mx-2">View</a>
+                        <a href="{{ route('tasks.edit', $task->id) }}" class="bg-blue-500 text-white p-2 rounded mx-2">Edit</a>
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')

@@ -27,6 +27,8 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/box/{task}', [TaskController::class, 'show'])->name('tasks.show'); // Added route for showing a single task
     Route::delete('/box/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy'); // Added route for deleting a task
     Route::get('/todo-list', [TaskController::class, 'todoList'])->name('todo-list');
+    Route::get('/box/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit'); // Rute untuk mengedit tugas
+    Route::put('/box/{task}', [TaskController::class, 'update'])->name('tasks.update'); // Rute untuk memperbarui tugas
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsController::class, 'updateProfilePicture'])->name('settings.updateProfilePicture');
@@ -34,6 +36,8 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 
 });
+
+
 /*------------------------------------------
 --------------------------------------------
 All Admin Routes List
