@@ -22,7 +22,8 @@
                     <img src="img/box.png" class="img-fluid rounded-circle mb-3" alt="Feature Image">
                     <h5 class="card-title">Box</h5>
                     <p class="card-text">In this box page you can create a new task by entering the task title, description, adding a deadline date and you can also choose the priority, low medium and high.</p>
-                    <a href="{{ route('box') }}" class="btn btn-primary">Go to Box</a>
+                    <a href="{{ route('box') }}" class="btn custom-button">Go to Box</a>
+
                 </div>
             </div>
         </div>
@@ -32,7 +33,7 @@
                     <img src="img/todolist.png" class="img-fluid rounded-circle mb-3" alt="Feature Image">
                     <h5 class="card-title">Todo-List</h5>
                     <p class="card-text">On this todo-list page, you can select the tasks you have created based on their priority.</p>
-                    <a href="{{ route('todo-list') }}" class="btn btn-primary">Go to Todo-List</a>
+                    <a href="{{ route('todo-list') }}" class="btn custom-button">Go to Todo-List</a>
                 </div>
             </div>
         </div>
@@ -42,7 +43,7 @@
                     <img src="img/setting.png" class="img-fluid rounded-circle mb-3" alt="Feature Image">
                     <h5 class="card-title">Setting</h5>
                     <p class="card-text">In this settings page you can update your profile photo and update your username.</p>
-                    <a href="{{ route('settings') }}" class="btn btn-primary">Go to Setting</a>
+                    <a href="{{ route('settings') }}"  class="btn custom-button">Go to Setting</a>
                 </div>
             </div>
         </div>

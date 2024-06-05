@@ -4,14 +4,14 @@
 
 <div class="container mx-auto py-4">
     <h1 class="text-3xl mb-4 font-bold">Box</h1>
-     <button id="addTaskButton" class="bg-green-500 text-white p-2 rounded mt-1 mb-4">Add Task</button>
-    
+    <button id="addTaskButton" class="bg-green-500 text-white p-2 rounded mt-1 mb-4">Add Task</button>
+
     @if(session('success'))
         <div class="bg-green-500 text-white p-2 rounded">
             {{ session('success') }}
         </div>
     @endif
-    
+
     <ul>
         @foreach($tasks as $task)
             <li class="mb-2">
@@ -19,7 +19,12 @@
                     <h2 class="text-xl font-semibold">{{ $task->name }}</h2>
                     <p>{{ $task->description }}</p>
                     <p>Due: {{ $task->due_date }}</p>
-                    <p>Priority: {{ $task->priority }}</p>
+                    <p>
+                        Priority: 
+                        <span class="px-2 py-1 rounded {{ $task->priority == 'Low' ? 'bg-green-200 text-green-800' : ($task->priority == 'Medium' ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800') }}">
+                            {{ $task->priority }}
+                        </span>
+                    </p>
                     <div class="flex justify-end mt-2">
                         <a href="{{ route('tasks.show', $task->id) }}" class="bg-lime-500 text-white p-2 rounded mx-2">View</a>
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline-block">
@@ -32,10 +37,11 @@
             </li>
         @endforeach
     </ul>
-    
-    
-    
-    <div id="addTaskModal" class="hidden fixed z-10 inset-0 overflow-y-auto">
+
+    <!-- Dark Background Overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+
+    <div id="addTaskModal" class="hidden fixed z-20 inset-0 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen">
             <div class="bg-white p-8 rounded shadow-lg max-w-md w-full">
                 <h2 class="text-2xl mb-4">Add Task</h2>
@@ -57,9 +63,9 @@
                         <label for="priority" class="block text-gray-700">Priority</label>
                         <div class="relative">
                             <select name="priority" id="priority" class="w-full border-gray-300 rounded p-2 appearance-none">
-                                <option value="Low">Low</option>
-                                <option value="Medium">Medium</option>
-                                <option value="High">High</option>
+                                <option value="Low" class="bg-green-200 text-green-800">Low</option>
+                                <option value="Medium" class="bg-yellow-200 text-yellow-800">Medium</option>
+                                <option value="High" class="bg-red-200 text-red-800">High</option>
                             </select>
                             <div id="priority-icons" class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                 <span id="low-icon" class="material-icons-outlined hidden">arrow_downward</span>
@@ -80,10 +86,12 @@
 
 <script>
 document.getElementById('addTaskButton').addEventListener('click', function() {
+    document.getElementById('overlay').classList.remove('hidden');
     document.getElementById('addTaskModal').classList.remove('hidden');
 });
 
 document.getElementById('cancelButton').addEventListener('click', function() {
+    document.getElementById('overlay').classList.add('hidden');
     document.getElementById('addTaskModal').classList.add('hidden');
 });
 
