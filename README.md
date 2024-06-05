@@ -1,3 +1,5 @@
+![](https://github.com/Dayatnur/Kelompok06-SiToDo-ProjectFINALPBW/preview.gif)
+
 # Kelompok-06
 ## Terdiri dari :
 
