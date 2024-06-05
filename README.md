@@ -1,4 +1,4 @@
-#Preview
+# Preview
 <div align="center">
     <img src="https://github.com/Dayatnur/Kelompok06-SiToDo-ProjectFINALPBW/blob/main/preview.gif" alt="Project Preview" width="600" />
 </div>
